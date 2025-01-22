@@ -4,11 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class QuizCardBuilder {
-    private ArrayList<QuizCard> cardList = new ArrayList<>();
+    private final ArrayList<QuizCard> cardList = new ArrayList<>();
     private JTextArea question;
     private JTextArea answer;
     private JFrame frame;
@@ -98,12 +97,11 @@ public class QuizCardBuilder {
     }
 
     private void saveFile(File file) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file));) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for(QuizCard card : cardList) {
                 writer.write(card.getQuestion() + "/");
                 writer.write(card.getAnswer() + "\n");
             }
-            writer.close();
         } catch (IOException e) {
             System.out.println("Couldn't write the cardList out: " + e.getMessage());
         }

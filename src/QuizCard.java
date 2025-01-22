@@ -1,6 +1,6 @@
 public class QuizCard {
-    private String question;
-    private String answer;
+    private final String question;
+    private final String answer;
 
     QuizCard(String q, String a){
         this.question = q;
